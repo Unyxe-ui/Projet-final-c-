@@ -18,7 +18,7 @@
 
 enum class Priorite {
     HAUTE = 0,
-    Normal = 1,
+    NORMALE = 1,
     BASSE = 2
 };
 
