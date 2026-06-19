@@ -1,11 +1,31 @@
-CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
-TARGET = carnet
+##
+## YNOV PROJECT, 2026
+## Ynov
+## File description:
+## Makefile
+##
 
-all: $(TARGET)
+CXX		 = g++
+CXXFLAGS = -Wall -Wextra -std=c++17 -I include
+NAME	 = carnet
 
-$(TARGET): carnet.cpp
-	$(CXX) $(CXXFLAGS) -o $(TARGET) carnet.cpp
+SRCS	 = $(shell find -name "*.cpp")
+OBJS	 = $(SRCS:.cpp=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET) contacts.csv
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
