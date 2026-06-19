@@ -5,7 +5,7 @@
 ** contacts.cpp — Logique métier
 */
 
-#include "types.hpp"
+#include "../include/types.hpp"
 
 void ajouterContact()
 {

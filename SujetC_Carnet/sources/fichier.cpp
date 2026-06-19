@@ -5,7 +5,7 @@
 ** fichier.cpp — Gestion de la persistance CSV
 */
 
-#include "types.hpp"
+#include "../include/types.hpp"
 
 void chargerCSV()
 {
@@ -15,7 +15,7 @@ void chargerCSV()
         return;
 
     std::string ligne;
-    std::getline(f, ligne); // skip header
+    std::getline(f, ligne);
 
     while (std::getline(f, ligne)) {
         std::stringstream ss(ligne);
