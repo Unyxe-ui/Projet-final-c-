@@ -7,29 +7,35 @@
 
 #include "include/types.hpp"
 
-std::vector<Tache> taches;
-const std::string FICHIER = "taches.txt";
+std::vector<Contact>    contacts;
+const std::string       FICHIER_CONTACTS = "contacts.csv";
+
+std::vector<Tache>      taches;
+const std::string       FICHIER_TACHES   = "taches.txt";
 
 int main()
 {
-    chargerFichier();
+    chargerContacts();
+    chargerTaches();
 
     int choix;
 
     do {
-        afficherMenu();
+        std::cout << "\n========================================\n";
+        std::cout << "        GESTIONNAIRE PERSONNEL\n";
+        std::cout << "========================================\n";
+        std::cout << "1. Carnet d'adresses (" << contacts.size() << " contact(s))\n";
+        std::cout << "2. To-Do List ("         << taches.size()   << " tache(s))\n";
+        std::cout << "3. Quitter\n";
         choix = lireEntier("Choix : ");
 
         switch (choix) {
-            case 1: ajouterTache();         break;
-            case 2: afficherToutes(taches); break;
-            case 3: filtrer();              break;
-            case 4: modifierStatut();       break;
-            case 5: supprimerTache();       break;
-            case 6: std::cout << "Au revoir !\n"; break;
+            case 1: menuCarnet(); break;
+            case 2: menuTodo();   break;
+            case 3: std::cout << "Au revoir !\n"; break;
             default: std::cout << "Choix invalide.\n";
         }
-    } while (choix != 6);
+    } while (choix != 3);
 
     return 0;
 }
