@@ -2,14 +2,14 @@
 ** YNOV PROJECT, 2026
 ** Ynov
 ** File description:
-** fichier.cpp — Gestion de la persistance CSV
+** Gestion d'écriture/lecture CSV du Carnet
 */
 
 #include "../../include/types.hpp"
 
-void chargerCSV()
+void chargerContacts()
 {
-    std::ifstream f(FICHIER);
+    std::ifstream f(FICHIER_CONTACTS);
 
     if (!f.is_open())
         return;
@@ -18,6 +18,7 @@ void chargerCSV()
     std::getline(f, ligne);
 
     while (std::getline(f, ligne)) {
+        if (ligne.empty()) continue;
         std::stringstream ss(ligne);
         Contact c;
 
@@ -30,9 +31,9 @@ void chargerCSV()
     }
 }
 
-void sauvegarderCSV()
+void sauvegarderContacts()
 {
-    std::ofstream f(FICHIER);
+    std::ofstream f(FICHIER_CONTACTS);
 
     f << "Prenom,Nom,Telephone,Email\n";
 

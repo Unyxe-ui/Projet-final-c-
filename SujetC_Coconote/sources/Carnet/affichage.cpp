@@ -2,7 +2,7 @@
 ** YNOV PROJECT, 2026
 ** Ynov
 ** File description:
-** affichage.cpp — Fonctions d'affichage
+** Fonctions d'affichage du Carnet
 */
 
 #include "../../include/types.hpp"
@@ -16,7 +16,7 @@ void afficherContact(int index, const Contact& c)
               << "\n";
 }
 
-void afficherTous()
+void afficherTousContacts()
 {
     if (contacts.empty()) {
         std::cout << "Carnet vide.\n";
@@ -27,7 +27,7 @@ void afficherTous()
         afficherContact(i + 1, contacts[i]);
 }
 
-void afficherMenu()
+void afficherMenuCarnet()
 {
     std::cout << "\n=== CARNET D'ADRESSES ===\n";
     std::cout << "1. Ajouter un contact\n";

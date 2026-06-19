@@ -2,7 +2,7 @@
 ** YNOV PROJECT, 2026
 ** Ynov
 ** File description:
-** contacts.cpp — Logique métier
+** Logique métier du Carnet d'adresses
 */
 
 #include "../../include/types.hpp"
@@ -24,7 +24,7 @@ void ajouterContact()
     std::getline(std::cin, c.email);
 
     contacts.push_back(c);
-    sauvegarderCSV();
+    sauvegarderContacts();
     std::cout << "Contact ajoute et sauvegarde.\n";
 }
 
@@ -54,7 +54,7 @@ void rechercherContact()
 
 void modifierContact()
 {
-    afficherTous();
+    afficherTousContacts();
     if (contacts.empty())
         return;
 
@@ -84,13 +84,13 @@ void modifierContact()
     std::getline(std::cin, tmp);
     if (!tmp.empty()) c.email = tmp;
 
-    sauvegarderCSV();
+    sauvegarderContacts();
     std::cout << "Contact modifie et sauvegarde.\n";
 }
 
 void supprimerContact()
 {
-    afficherTous();
+    afficherTousContacts();
     if (contacts.empty())
         return;
 
@@ -102,6 +102,25 @@ void supprimerContact()
     }
 
     contacts.erase(contacts.begin() + n - 1);
-    sauvegarderCSV();
+    sauvegarderContacts();
     std::cout << "Contact supprime.\n";
+}
+
+void menuCarnet()
+{
+    int choix;
+    do {
+        afficherMenuCarnet();
+        choix = lireEntier("Choix : ");
+
+        switch (choix) {
+            case 1: ajouterContact(); break;
+            case 2: afficherTousContacts(); break;
+            case 3: rechercherContact(); break;
+            case 4: modifierContact(); break;
+            case 5: supprimerContact(); break;
+            case 6: std::cout << "Retour au menu principal.\n"; break;
+            default: std::cout << "Choix invalide.\n";
+        }
+    } while (choix != 6);
 }

@@ -2,7 +2,7 @@
 ** YNOV PROJECT, 2026
 ** Ynov
 ** File description:
-** Logique métier
+** Logique métier de la To-Do List
 */
 
 #include "../../include/types.hpp"
@@ -12,7 +12,7 @@ void ajouterTache()
     Tache t;
 
     std::cout << "Titre : ";
-    std:: getline(std::cin, t.titre);
+    std::getline(std::cin, t.titre);
 
     int p = lireEntier("Priorite (0=Haute, 1=Normale, 2=Basse) : ");
 
@@ -21,11 +21,11 @@ void ajouterTache()
     t.dateCreation = dateAujourdhui();
 
     taches.push_back(t);
-    sauvegarder();
+    sauvegarderTaches();
     std::cout << "Tache ajoutee.\n";
 }
 
-void filtrer()
+void filtrerTaches()
 {
     int type = lireEntier("Filtrer par : 1=Statut 2=Priorite\n> ");
 
@@ -45,12 +45,12 @@ void filtrer()
                 resultat.push_back(t);
     }
 
-    afficherToutes(resultat);
+    afficherToutesTaches(resultat);
 }
 
 void modifierStatut()
 {
-    afficherToutes(taches);
+    afficherToutesTaches(taches);
     if (taches.empty())
         return;
     
@@ -63,14 +63,14 @@ void modifierStatut()
 
     int s = lireEntier("Nouveau statut (0=A faire, 1=En cours, 2=Termine) : ");
 
-    taches[n - 1].statut = static_cast<Statut>(clamp(s, 0, 1));
-    sauvegarder();
+    taches[n - 1].statut = static_cast<Statut>(clamp(s, 0, 2));
+    sauvegarderTaches();
     std::cout << "Statut mis a jour.\n";
 }
 
 void supprimerTache()
 {
-    afficherToutes(taches);
+    afficherToutesTaches(taches);
     if (taches.empty())
         return;
     
@@ -82,6 +82,25 @@ void supprimerTache()
     }
 
     taches.erase(taches.begin() + n - 1);
-    sauvegarder();
+    sauvegarderTaches();
     std::cout << "Tache supprimee.\n";
+}
+
+void menuTodo()
+{
+    int choix;
+    do {
+        afficherMenuTodo();
+        choix = lireEntier("Choix : ");
+
+        switch (choix) {
+            case 1: ajouterTache(); break;
+            case 2: afficherToutesTaches(taches); break;
+            case 3: filtrerTaches(); break;
+            case 4: modifierStatut(); break;
+            case 5: supprimerTache(); break;
+            case 6: std::cout << "Retour au menu principal.\n"; break;
+            default: std::cout << "Choix invalide.\n";
+        }
+    } while (choix != 6);
 }

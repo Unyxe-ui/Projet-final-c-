@@ -2,7 +2,7 @@
 ** YNOV PROJECT, 2026
 ** Ynov
 ** File description:
-** Fonctions utilitaires partagees
+** Fonctions utiles
 */
 
 #include "../../include/types.hpp"

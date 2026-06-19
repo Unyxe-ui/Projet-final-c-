@@ -1,0 +1,13 @@
+gestionnaire
+*.o
+*.out
+contacts.csv
+taches.txt
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+*.gch
+*.dSYM/
+core
