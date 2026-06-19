@@ -7,7 +7,7 @@
 
 #include "../include/types.hpp"
 
-void affichageTache(int index, const Tache& t)
+void afficherTache(int index, const Tache& t)
 {
     std::cout << "[" << index << "] "
               << t.titre

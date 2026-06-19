@@ -7,7 +7,7 @@
 
 #include "include/types.hpp"
 
-std::vector<Tache> tache;
+std::vector<Tache> taches;
 const std::string FICHIER = "taches.txt";
 
 int main()
