@@ -2,10 +2,10 @@
 ** YNOV PROJECT, 2026
 ** Ynov
 ** File description:
-** utils.cpp — Fonctions utilitaires
+** Fonctions utilitaires partagees
 */
 
-#include "../../include/types.hpp"
+#include "../include/types.hpp"
 
 std::string toLower(const std::string& s)
 {
@@ -35,4 +35,9 @@ int lireEntier(const std::string& invite)
         }
     }
     return valeur;
+}
+
+int clamp(int valeur, int min, int max)
+{
+    return std::max(min, std::min(max, valeur));
 }
