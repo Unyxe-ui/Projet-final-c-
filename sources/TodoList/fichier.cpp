@@ -5,7 +5,7 @@
 ** Gestion de la lecture/écriture
 */
 
-#include "../include/types.hpp"
+#include "../../include/types.hpp"
 
 void chargerFichier()
 {
