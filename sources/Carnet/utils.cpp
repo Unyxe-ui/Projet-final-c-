@@ -5,7 +5,7 @@
 ** Fonctions utilitaires partagees
 */
 
-#include "../include/types.hpp"
+#include "../../include/types.hpp"
 
 std::string toLower(const std::string& s)
 {
